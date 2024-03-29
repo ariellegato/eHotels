@@ -7,10 +7,6 @@ public class Address {
     private String province;
     private String country;
     private String postalCode;
-    private Integer id;
-    private String course_name;
-    private int grade;
-    private int student_id;
 
     // Constructor
 
