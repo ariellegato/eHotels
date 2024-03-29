@@ -39,7 +39,7 @@ public class RoomService {
             rs.close();
             stmt.close();
             con.close();
-            db.close();
+            //db.close();
 
             return rooms;
         } catch (Exception e) {
@@ -79,7 +79,7 @@ public class RoomService {
             System.out.println(output);
 
             stmt.close();
-            db.close();
+            //db.close();
         } catch (Exception e) {
             message = "Error while inserting room: " + e.getMessage();
         } finally {

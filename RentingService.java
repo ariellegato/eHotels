@@ -38,7 +38,7 @@ public class RentingService {
             rs.close();
             stmt.close();
             con.close();
-            db.close();
+           // db.close();
 
             return rentings;
         } catch (Exception e) {
@@ -77,7 +77,7 @@ public class RentingService {
             System.out.println(output);
 
             stmt.close();
-            db.close();
+           // db.close();
         } catch (Exception e) {
             message = "Error while inserting renting: " + e.getMessage();
         } finally {

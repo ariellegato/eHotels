@@ -38,7 +38,7 @@ public class BookingService {
             rs.close();
             stmt.close();
             con.close();
-            db.close();
+            //db.close();
 
             return bookings;
         } catch (Exception e) {
@@ -77,7 +77,7 @@ public class BookingService {
             System.out.println(output);
 
             stmt.close();
-            db.close();
+            //db.close();
         } catch (Exception e) {
             message = "Error while inserting booking: " + e.getMessage();
         } finally {
