@@ -123,4 +123,41 @@ public class HotelService {
 
         return message;
     }
+
+    /**
+     * Method to View aggregated capacity of all rooms of a specific hotel
+     *
+     * @param hotel hotel for which to calculate capacity
+     * @return aggregated capacity of hotel
+     * @throws Exception when trying to connect to database
+     */
+    public String getHotelCapacity(String hotel) throws Exception {
+        String message = "";
+        Connection con = null;
+        ConnectionDB db = new ConnectionDB();
+
+        String sql = "SELECT total_capacity FROM HotelCapacity WHERE LOWER(hotel_name) = LOWER(?);";
+
+        int capacity;
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, hotel);
+            ResultSet rs = stmt.executeQuery();
+            capacity = rs.getInt("total_capacity");
+            rs.close();
+            stmt.close();
+            con.close();
+
+            message = "Aggregated capacity of " + hotel + ": " + capacity;
+
+        } catch (Exception e) {
+            //message = "Error while searching available rooms: " + e.getMessage();
+            throw new Exception(e.getMessage());
+        }
+
+        return message;
+    }
+
 }
