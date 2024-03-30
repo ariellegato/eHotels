@@ -1,3 +1,5 @@
+package com.demo;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -164,4 +166,42 @@ public class RoomService {
 
         return message;
     }
+
+    /**
+     * Method to View number of available rooms by city
+     *
+     * @param city area to search for available rooms
+     * @return number of available rooms in the city
+     * @throws Exception when trying to connect to database
+     */
+    public String getAvailableRoomsByCity(String city) throws Exception {
+        String message = "";
+        Connection con = null;
+        ConnectionDB db = new ConnectionDB();
+
+        String sql = "SELECT city, available_rooms FROM AvailableRooms WHERE (LOWER)city = LOWER(?);";
+
+        //List<Room> availableRooms = new ArrayList<>();
+        int availableRooms;
+
+        try {
+            con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setString(1, city);
+            ResultSet rs = stmt.executeQuery();
+            availableRooms = rs.getInt("available_rooms");
+            rs.close();
+            stmt.close();
+            con.close();
+
+            message = availableRooms + "available in " + city;
+
+        } catch (Exception e) {
+            //message = "Error while searching available rooms: " + e.getMessage();
+            throw new Exception(e.getMessage());
+        }
+
+        return message;
+    }
+
 }
