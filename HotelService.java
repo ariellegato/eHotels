@@ -15,7 +15,7 @@ public class HotelService {
      * @throws Exception when trying to connect to the database
      */
     public List<Hotel> getHotels() throws Exception {
-        String sql = "SELECT * FROM Hotel";
+        String sql = "SELECT * FROM hotel";
         ConnectionDB db = new ConnectionDB();
         List<Hotel> hotels = new ArrayList<>();
 
@@ -43,8 +43,12 @@ public class HotelService {
             con.close();
             db.close();
 
+            System.out.println("Number of hotels retrieved: " + hotels.size());
+
+
             return hotels;
         } catch (Exception e) {
+            System.err.println("Error while fetching hotels: " + e.getMessage());
             throw new Exception(e.getMessage());
         }
     }

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Hotel Booking</title>
-    <!-- Add any CSS styling here -->
+
     <style>
-        /* Example CSS styling */
+
         .container {
             text-align: center;
             margin-top: 50px;
@@ -35,6 +35,15 @@
     <a href="room.jsp" class="button">Room</a>
     <!-- Link to renting.jsp -->
     <a href="renting.jsp" class="button">Renting</a>
+    <!-- Link to customer.jsp -->
+    <a href="customer.jsp" class="button">Customer</a>
+</div>
+</body>
+<body>
+<div class="container">
+    <h2>Select what type of user you are:</h2>
+    <!-- Link to employee.jsp -->
+    <a href="employee.jsp" class="button">Employee</a>
     <!-- Link to customer.jsp -->
     <a href="customer.jsp" class="button">Customer</a>
 </div>
